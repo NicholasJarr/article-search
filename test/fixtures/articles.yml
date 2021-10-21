@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+valid_article:
+  title: Title
+  body: Body
+
+foo_bar:
+  title: foo
+  body: bar
+
+baz_foo:
+  title: baz
+  body: foo
+
+bar_baz:
+  title: bar
+  body: baz
+
+qux_baz:
+  title: qux
+  body: baz
