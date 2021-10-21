@@ -2,22 +2,24 @@ require "test_helper"
 
 class ArticleTest < ActiveSupport::TestCase
   def setup
-    # TODO: Use fixture here
-    # TODO: Make tests organized like search tests
-    @article = Article.new title: "Title", body: "body"
   end
 
   test "should be valid" do
-    assert @article.valid?
+    article = Article.new title: "Title", body: "body"
+    assert article.valid?
   end
 
-  test "should be invalid" do
+  test "title must be present" do
     invalid_article = Article.new title: "", body: "body"
     assert_not invalid_article.valid?
+  end
 
+  test "body must be present" do
     invalid_article = Article.new title: "title", body: ""
     assert_not invalid_article.valid?
+  end
 
+  test "body must be less than maximum length" do
     invalid_article = Article.new title: "title", body: 'a' * 1000
     assert_not invalid_article.valid?
   end
