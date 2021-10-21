@@ -2,6 +2,8 @@ require "test_helper"
 
 class ArticleTest < ActiveSupport::TestCase
   def setup
+    # TODO: Use fixture here
+    # TODO: Make tests organized like search tests
     @article = Article.new title: "Title", body: "body"
   end
 
