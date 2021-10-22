@@ -6,5 +6,5 @@ class Search < ApplicationRecord
     }
 
     default_scope { order created_at: :desc }
-    scope :ip_addresses, -> { select(:ip_address).distinct }
+    scope :ip_addresses, -> { unscoped.select(:ip_address).distinct }
 end
