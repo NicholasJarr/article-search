@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
   def index
     @query = params[:query]
+    if not @query.nil? and not @query.empty?
+      Search.create query: @query, ip_address: request.remote_ip
+    end
+
     @articles = @query ? Article.has_keyword(@query) : Article.all
   end
 
