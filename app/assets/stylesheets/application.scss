@@ -1,0 +1,204 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import url('https://rsms.me/inter/inter.css');
+@import url('https://unpkg.com/normalize.css@8.0.1/normalize.css');
+@import url('https://unpkg.com/css.gg/icons/all.css');
+
+:root {
+    --spacing-1: 0.25rem;
+    --spacing-2: 0.5rem;
+    --spacing-3: 0.75rem;
+    --spacing-4: 1rem;
+
+    --spacing-center-content: 25%;
+
+    --dark-bg-color: black;
+    --dark-fg-color: black;
+
+    --light-fg-color: white;
+
+    --grey-border-color: silver;
+
+    --green-fg-color: limegreen;
+
+    --hover-opacity: 0.75;
+}
+
+html {
+    font-family: 'Inter', sans-serif;
+    height: 100%;
+    width: 100%;
+}
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    padding: var(--spacing-3);
+    margin: 0;
+    background-color: var(--dark-bg-color);
+    color: var(--light-fg-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    list-style: none;
+
+    & > * + * {
+        margin-left: var(--spacing-3);
+    }
+
+    & a {
+        color: var(--light-fg-color);
+        text-decoration: none;
+
+        &:hover {
+            opacity: var(--hover-opacity);
+        }
+    }
+}
+
+main {
+    display: flex;
+    flex-flow: column;
+    flex: auto;
+    padding: var(--spacing-4) var(--spacing-center-content);
+}
+
+/* Articles */
+
+section#search_box {
+    display: flex;
+    flex-flow: column;
+
+    form {
+        display: flex;
+
+        input:first-child {
+            flex: auto;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        & > * + * {
+            margin-left: var(--spacing-2);
+        }
+
+        button[type="submit"] {
+            background-color: transparent;
+            border: 0;
+            cursor: pointer;
+
+            &:hover {
+                opacity: var(--hover-opacity);
+            }
+        }
+    }
+
+    & > a {
+        display: inline-flex;
+        align-items: center;
+        margin-top: var(--spacing-2);
+        color: var(--dark-fg-color);
+        font-size: 0.9rem;
+        text-decoration: none;
+
+        &:hover {
+            opacity: var(--hover-opacity);
+        }
+        
+        span:first-of-type {
+            color: var(--green-fg-color);
+            font-size: 1.3rem;
+            font-style: normal;
+            font-weight: bold;
+        }
+
+        span:last-of-type {
+            margin-left: var(--spacing-1);
+        }
+    }
+}
+
+section#search_results {
+    margin-top: var(--spacing-3);
+
+    & > p {
+        font-weight: bold;
+        text-align: center;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        & > * + * {
+            margin-top: var(--spacing-3);
+        }
+
+        li {
+            padding: var(--spacing-4);
+            border: 1px solid var(--grey-border-color);
+            font-weight: bold;
+        }
+    }
+}
+
+/* Searches */
+
+table#searches_table {
+    table-layout: fixed;
+    border-collapse: collapse;
+
+    thead {
+        font-size: 1.1rem;
+        font-weight: bold;
+
+        th#query_header {
+            text-align: left;
+            width: 75%;
+        }
+
+        th#ip_address_header {
+            text-align: right;
+            width: 25%;
+        }
+    }
+
+    tbody {
+        td.ip_address_column {
+            text-align: right;
+        }
+
+        tr > td {
+            padding: var(--spacing-2);
+        }
+
+        td:only-of-type {
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+}

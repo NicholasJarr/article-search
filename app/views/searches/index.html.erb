@@ -1,8 +1,8 @@
-<table>
+<table id="searches_table">
     <thead>
         <tr>
-            <td>Query</td>
-            <td>IP Address</td>
+            <th id="query_header">Query</th>
+            <th id="ip_address_header">IP Address</th>
         </tr>
     </thead>
     <tbody>
@@ -14,7 +14,7 @@
             <% @searches.each do |s| %>
                 <tr id="<%= s.id %>">
                     <td><%= s.query %></td>
-                    <td><%= s.ip_address %></td>
+                    <td class="ip_address_column"><%= s.ip_address %></td>
                 </tr>
             <% end %>
         <% end %>

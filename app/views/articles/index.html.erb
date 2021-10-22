@@ -1,10 +1,14 @@
-<section>
+<section id="search_box">
     <%= form_with url: articles_path, method: :get, local: true do |f| %>
-        <%= f.label :query, "Search: " %>
         <%= f.text_field :query, value: @query %>
-        <%= f.submit "Go" %>
+        <%= f.button :submit do %>
+            <i class="gg-search"></i>
+        <% end %>
     <% end %>
-    <%= link_to "New Article", new_article_path %>
+    <%= link_to new_article_path do %>
+        <span>&plus;</span>
+        <span>New article</span>
+    <% end %>
 </section>
 <section id="search_results">
     <% if @articles.empty? %>

@@ -7,7 +7,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     assert_select 'form[action=?]', articles_path do
       assert_select 'input[name=query]'
-      assert_select 'input[type=submit]'
+      assert_select 'button[type=submit]'
     end
     assert_select 'a[href=?]', new_article_path
   end
