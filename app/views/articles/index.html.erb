@@ -3,3 +3,14 @@
     <button type="submit">Go</button>
     <%= link_to "New Article", new_article_path %>
 </section>
+<section id="search_results">
+    <% if @articles.empty? %>
+        <p>No articles available</p>
+    <% else %>
+        <ul>
+            <% @articles.each do |article| %>
+                <li><%= article.title %></li>
+            <% end %>
+        </ul>
+    <% end %>
+</section>
