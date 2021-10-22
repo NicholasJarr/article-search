@@ -1,1 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+foo_192.168.0.1:
+  query: foo
+  ip_address: 192.168.0.1
+
+bar_192.168.100.255:
+  query: bar
+  ip_address: 192.168.100.255

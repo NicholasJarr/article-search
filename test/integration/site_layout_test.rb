@@ -6,5 +6,6 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_template "articles/index"
 
     assert_select 'a[href=?]', root_path
+    assert_select 'a[href=?]', searches_path
   end
 end

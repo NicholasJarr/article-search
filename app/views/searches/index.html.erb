@@ -1,0 +1,22 @@
+<table>
+    <thead>
+        <tr>
+            <td>Query</td>
+            <td>IP Address</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% if @searches.empty? %>
+            <tr>
+                <td colspan=2>No queries available</td>
+            </tr>
+        <% else %>
+            <% @searches.each do |s| %>
+                <tr id="<%= s.id %>">
+                    <td><%= s.query %></td>
+                    <td><%= s.ip_address %></td>
+                </tr>
+            <% end %>
+        <% end %>
+    </tbody>
+</table>
