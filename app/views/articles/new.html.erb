@@ -1,2 +1,13 @@
-<h1>Articles#new</h1>
-<p>Find me in app/views/articles/new.html.erb</p>
+<section>
+  <%= form_with model: @article, local: true do |form| %>
+    <%= render 'error_messages' %>
+
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+
+    <%= form.submit %>
+  <% end %>
+</section>
