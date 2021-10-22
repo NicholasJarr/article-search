@@ -1,6 +1,9 @@
 <section>
-    <input id="search" />
-    <button type="submit">Go</button>
+    <%= form_with url: articles_path, method: :get, local: true do |f| %>
+        <%= f.label :query, "Search: " %>
+        <%= f.text_field :query, value: @query %>
+        <%= f.submit "Go" %>
+    <% end %>
     <%= link_to "New Article", new_article_path %>
 </section>
 <section id="search_results">

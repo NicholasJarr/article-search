@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    @query = params[:query]
+    @articles = @query ? Article.has_keyword(@query) : Article.all
   end
 
   def new

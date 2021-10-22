@@ -5,9 +5,11 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get root_path
     assert_response :success
 
-    assert_select 'input#search'
+    assert_select 'form[action=?]', articles_path do
+      assert_select 'input[name=query]'
+      assert_select 'input[type=submit]'
+    end
     assert_select 'a[href=?]', new_article_path
-    assert_select 'button[type=submit]'
   end
 
   test "should get new" do
