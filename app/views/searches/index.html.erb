@@ -1,3 +1,14 @@
+<% if @ip_addresses.any? %>
+    <section id="table_filter">
+        <%= form_with url: searches_path, method: :get, local: true do |f| %>
+            <%= f.label :ip_address, "IP Address:" %>
+            <%= f.select :ip_address, @ip_addresses, selected: @ip_address %>
+            <%= f.button :submit do %>
+                <i class="gg-play-list-search"></i>
+            <% end %>
+        <% end %>
+    </section>
+<% end %>
 <table id="searches_table">
     <thead>
         <tr>

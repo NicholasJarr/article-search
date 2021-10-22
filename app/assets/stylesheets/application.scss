@@ -168,6 +168,37 @@ section#search_results {
 
 /* Searches */
 
+section#table_filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-3);
+
+    form {
+        margin-left: auto;
+        font-size: 0.9rem;
+
+        select[name="ip_address"] {
+            background-color: transparent;
+            border: 1px solid var(--grey-border-color);
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: transparent;
+            border: 0;
+            cursor: pointer;
+
+            &:hover {
+                opacity: var(--hover-opacity);
+            }
+
+            i {
+                margin-bottom: 2px;
+            }
+        }
+    }
+}
+
 table#searches_table {
     table-layout: fixed;
     border-collapse: collapse;

@@ -47,4 +47,9 @@ class SearchTest < ActiveSupport::TestCase
     search = Search.new query: "Query", ip_address: "...."
     assert_not search.valid?
   end
+
+  test "ip_addresses scope should work properly" do
+    # Search between the fixtures; check fixtures for available search targets
+    assert Search.ip_addresses.count == 2
+  end
 end
