@@ -1,7 +1,7 @@
 import { delay, fromEvent, map, of, race, switchMap } from "rxjs"
 import * as $ from "jquery"
 
-const SEARCH_DEBOUNCE_TIME = 1000
+const SEARCH_DEBOUNCE_TIME = 500
 
 interface Article {
     id: number;
