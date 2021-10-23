@@ -13,11 +13,11 @@ class SearchSaver
             if recent_search.query == @query
                 recent_search.updated_at = DateTime.now
             end
-            recent_search.save
+            recent_search.save!
             return recent_search
         end
 
-        Search.create query: @query, ip_address: @ip_address
+        Search.create! query: @query, ip_address: @ip_address
     end
 
     private
