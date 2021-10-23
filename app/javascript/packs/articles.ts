@@ -55,7 +55,10 @@ function renderArticles(el: HTMLDivElement, articles: Article[]) {
     }
 
     $("<ul>").append(
-        articles.map(a => $("<li>").text(a.title))
+        articles.map(a =>
+            $("<li>")
+                .append($("<span id='title'>").text(a.title))
+                .append($("<p id='body'>").text(a.body)))
     ).appendTo(el)
 }
 

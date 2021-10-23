@@ -8,7 +8,8 @@ class ArticlesIndexTest < ActionDispatch::IntegrationTest
     assert_select 'section#search_results' do
       assert_select 'ul' do
         assigns(:articles).each do |article|
-          assert_select 'li', text: article.title
+          assert_select 'li #title', text: article.title
+          assert_select 'li #body', text: article.body
         end
       end
     end
@@ -47,7 +48,8 @@ class ArticlesIndexTest < ActionDispatch::IntegrationTest
       assert_select 'ul' do
         assert_select 'li', count: 3
         assigns(:articles).each do |article|
-          assert_select 'li', text: article.title
+          assert_select 'li #title', text: article.title
+          assert_select 'li #body', text: article.body
 
           assert article.title.include?(query) || article.body.include?(query)
         end

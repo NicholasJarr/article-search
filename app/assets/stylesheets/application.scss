@@ -185,7 +185,16 @@ section#search_results {
         li {
             padding: var(--spacing-4);
             border: 1px solid var(--grey-border-color);
-            font-weight: bold;
+
+            #title {
+                font-weight: bold;
+            }
+
+            #body {
+                margin: var(--spacing-2) 0 0 0;
+                font-size: 0.9rem;
+                font-weight: 300;
+            }
         }
     }
 }

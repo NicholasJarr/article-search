@@ -20,7 +20,10 @@
     <% else %>
         <ul>
             <% @articles.each do |article| %>
-                <li><%= article.title %></li>
+                <li>
+                    <span id="title"><%= article.title %></span>
+                    <p id="body"><%= article.body %></p>
+                </li>
             <% end %>
         </ul>
     <% end %>
