@@ -8,7 +8,7 @@ class SearchSaver
 
     def save
         recent_search = Search.first
-        if is_query_similar recent_search.query, @query
+        if recent_search && is_query_similar(recent_search.query, @query)
             recent_search.query = @query
             if recent_search.query == @query
                 recent_search.updated_at = DateTime.now

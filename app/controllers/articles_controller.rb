@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
   def index
+    # TODO: Make all create and save call use ! for exceptions to propagate up
+    # TODO: Limit article title size
     @query = params[:query]
     if not @query.nil? and not @query.empty?
       SearchSaver.new(@query, request.remote_ip).save
