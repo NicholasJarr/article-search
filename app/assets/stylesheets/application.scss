@@ -32,8 +32,14 @@
     --light-fg-color: white;
 
     --grey-border-color: silver;
+    --red-border-color: red;
 
+    --green-bg-color: limegreen;
     --green-fg-color: limegreen;
+
+    --red-bg-color: red;
+
+    --lightgrey-bg-color: lightgray;
 
     --hover-opacity: 0.75;
 }
@@ -84,6 +90,24 @@ main {
     flex-flow: column;
     flex: auto;
     padding: var(--spacing-4) var(--spacing-center-content);
+}
+
+#alert_container {
+    margin-bottom: var(--spacing-4);
+
+    & > div {
+        padding: var(--spacing-2);
+        background-color: var(--lightgrey-bg-color);
+
+        &.success {
+            background-color: var(--green-bg-color);
+            color: var(--light-fg-color);
+        }
+    }
+
+    & > * + * {
+        margin-top: var(--spacing-1);
+    }
 }
 
 /* Articles */
@@ -163,6 +187,57 @@ section#search_results {
             border: 1px solid var(--grey-border-color);
             font-weight: bold;
         }
+    }
+}
+
+/* Articles new */
+
+section#new_article {
+    form {
+        display: flex;
+        flex-flow: column;
+
+        & > * + * {
+            margin-top: var(--spacing-2);
+        }
+
+        input, textarea {
+            flex: auto;
+        }
+
+        label {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        input[type="submit"] {
+            margin-left: auto;
+            margin-right: auto;
+            background-color: transparent;
+            color: var(--dark-fg-color);
+            font-size: 0.9rem;
+            text-decoration: none;
+            border: 0;
+            cursor: pointer;
+
+            &:hover {
+                opacity: var(--hover-opacity);
+            }
+        }
+
+        .field_with_errors {
+            display: flex;
+
+            input, textarea {
+                border: 1px solid var(--red-border-color);
+            }
+        }
+    }
+
+    #error_explanation {
+        color: var(--light-fg-color);
+        background-color: var(--red-bg-color);
+        padding: var(--spacing-2);
     }
 }
 

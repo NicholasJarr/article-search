@@ -16,7 +16,7 @@ class ArticleCreationTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     assert flash[:success]
-    assert_select 'div.alert', count: 1
+    assert_select '#alert_container > div', count: 1
   end
 
   test "should fail for invalid articles and show errors" do
