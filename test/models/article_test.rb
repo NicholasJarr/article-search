@@ -14,6 +14,11 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not invalid_article.valid?
   end
 
+  test "title must be less than maximum length" do
+    invalid_article = Article.new title: 'a' * 1000, body: "body"
+    assert_not invalid_article.valid?
+  end
+
   test "body must be present" do
     invalid_article = Article.new title: "title", body: ""
     assert_not invalid_article.valid?

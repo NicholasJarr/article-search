@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   def index
-    # TODO: Limit article title size
     @query = params[:query]
     if not @query.nil? and not @query.empty?
       SearchSaver.new(@query, request.remote_ip).save

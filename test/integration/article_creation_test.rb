@@ -66,5 +66,16 @@ class ArticleCreationTest < ActionDispatch::IntegrationTest
 
     assert_select 'div#error_explanation'
     assert_select 'div.field_with_errors'
+
+    assert_no_difference 'Article.count', 0 do
+      post articles_path, params: { article: { title: 'a' * 1000,
+                                                body: 'body' } }
+    end
+
+    assert_template 'articles/new'
+    assert_response :success
+
+    assert_select 'div#error_explanation'
+    assert_select 'div.field_with_errors'
   end
 end
