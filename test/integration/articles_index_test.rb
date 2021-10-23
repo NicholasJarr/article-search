@@ -14,8 +14,26 @@ class ArticlesIndexTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should show list with filtered article if there is a query" do
-    get root_path query: "baz"
+  test "should return list with all articles if there is no query, and request is for json" do
+    get root_path, headers: { 'Accept' => 'application/json'}
+    assert_response :success
+
+    body = JSON.parse(response.body)
+    assert body.count == assigns(:articles).count
+
+    assigns(:articles).each do |article|
+      body_article = body.find { |a| a['id'] == article.id }
+
+      assert body_article
+      assert body_article["title"] == article.title
+      assert body_article["body"] == article.body
+    end
+  end
+
+  test "should show list with filtered articles if there is a query" do
+    query = "baz"
+
+    get root_path query: query
     assert_response :success
 
     # assert that there is a search with the current query
@@ -30,8 +48,29 @@ class ArticlesIndexTest < ActionDispatch::IntegrationTest
         assert_select 'li', count: 3
         assigns(:articles).each do |article|
           assert_select 'li', text: article.title
+
+          assert article.title.include?(query) || article.body.include?(query)
         end
       end
+    end
+  end
+
+  test "should return list with filtered articles if there is a query, and request is for json" do
+    query = "baz"
+
+    get root_path, params: { query: query }, headers: { 'Accept' => 'application/json'}
+    assert_response :success
+
+    body = JSON.parse(response.body)
+    assert body.count == 3
+
+    assigns(:articles).each do |article|
+      body_article = body.find { |a| a['id'] == article.id }
+
+      assert body_article
+      assert body_article["title"] == article.title
+      assert body_article["body"] == article.body
+      assert body_article["title"].include?(query) || body_article["body"].include?(query)
     end
   end
 end

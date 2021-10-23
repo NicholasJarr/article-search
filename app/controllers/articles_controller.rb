@@ -6,6 +6,11 @@ class ArticlesController < ApplicationController
     end
 
     @articles = @query ? Article.has_keyword(@query) : Article.all
+    
+    respond_to do |format|
+      format.html
+      format.json { render json: @articles }
+    end
   end
 
   def new

@@ -1,5 +1,9 @@
+<% content_for :head do %>
+    <%= javascript_pack_tag 'articles', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
 <section id="search_box">
-    <%= form_with url: articles_path, method: :get, local: true do |f| %>
+    <%= form_with url: articles_path, method: :get, local: true, html: { autocomplete: 'off' } do |f| %>
         <%= f.text_field :query, value: @query %>
         <%= f.button :submit do %>
             <i class="gg-search"></i>

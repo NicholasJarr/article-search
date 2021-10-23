@@ -4,7 +4,11 @@ require "rails/test_help"
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
-  parallelize(workers: :number_of_processors, with: :threads)
+  # parallelize(workers: :number_of_processors, with: :threads)
+
+  # Run tests sequentially because local sqlite3 db doesn't play well
+  # with parallelism
+  parallelize(workers: 1)
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
