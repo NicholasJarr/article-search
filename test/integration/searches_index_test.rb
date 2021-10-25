@@ -5,7 +5,7 @@ class SearchesIndexTest < ActionDispatch::IntegrationTest
     get searches_path
     assert_response :success
 
-    selected_ip = Search.ip_addresses.first.ip_address
+    selected_ip = Search.ip_addresses[0].ip_address
     assert_select 'section#table_filter' do
       assert_select 'form[action=?]', searches_path do
         assert_select 'select[name="ip_address"]' do
@@ -28,7 +28,7 @@ class SearchesIndexTest < ActionDispatch::IntegrationTest
     end
   end
   test "should show table with selected ip if there is an ip selected" do
-    selected_ip = Search.ip_addresses.second.ip_address
+    selected_ip = Search.ip_addresses[1].ip_address
 
     get searches_path ip_address: selected_ip
     assert_response :success
