@@ -1,3 +1,22 @@
+# Here is where the main algorithm of the app is.
+# Basically the algorithms assigns a percentage of similarity between two queries, and
+# checks the percentage relation with a threshold. Greater than threshold, it's considered
+# similar; less than threhold, it's considered different
+#
+# The algorithm:
+#   - Given two queries q1 and q2
+#       - For each character in q1, it is searched in q2
+#       - If it is found
+#           - Checks the distance between the original index and the new
+#           - Uses 2 ** -distance to create a scale (from 0 to 1) where smaller values
+#             are further and bigger values are closer to original position
+#           - If it is too far (closer to 0), disconsider it
+#           - Otherwise, add value to score
+#       - Otherwise, ignore character
+#       - After loop is over, return what is the percentage of the final score in the query length
+# There is also a black list to prevent from finding repeated characters
+# Check the test cases on search_saver_test.rb for examples
+
 class SearchSaver
     SIMILARITY_THRESHOLD = 0.5
 

@@ -2,12 +2,15 @@ class ArticlesController < ApplicationController
   def index
     @query = params[:query]
     if not @query.nil? and not @query.empty?
+      # Heroku sets this headers for original request ip
       ip = ENV['HTTP_X_FORWARDED_FOR'] || request.remote_ip
       SearchSaver.new(@query, ip).save
     end
 
+    # Return articles filtered, or all of them if there is no filter
     @articles = @query ? Article.has_keyword(@query) : Article.all
     
+    # Accept JSON requests too
     respond_to do |format|
       format.html
       format.json { render json: @articles }

@@ -1,24 +1,59 @@
-# README
+# Realtime Search Box
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sample project to demonstrate my Rails skills.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- Article list page with real-time filter
 
-* System dependencies
+- Searches page with a table filtered by user ip, showing the previous queries ordered by date.
 
-* Configuration
+- SearchSaver Model with algorithm for aggregating similar recent queries. Check model file for algorithm explanation.
 
-* Database creation
+- JS frontend code with debouncer to prevent server being flooded with requests, but JS can be disabled and it would still work.
 
-* Database initialization
+## Running tests
 
-* How to run the test suite
+- Start local PostgreSQL DB
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+docker-compose up
+```
 
-* Deployment instructions
+- Run migrations
 
-* ...
+```bash
+bundle exec rails db:migrate
+```
+
+- Running tests
+
+```bash
+bundle exec rails t
+```
+
+## Starting server
+
+- Start local PostgreSQL DB
+
+```bash
+docker-compose up
+```
+
+- Run migrations
+
+```bash
+bundle exec rails db:migrate
+```
+
+- (Optional) Seed db
+
+```bash
+bundle exec rails db:seed
+```
+
+- Start Rails server
+
+```bash
+bundle exec rails s
+```
