@@ -2,7 +2,8 @@ class ArticlesController < ApplicationController
   def index
     @query = params[:query]
     if not @query.nil? and not @query.empty?
-      SearchSaver.new(@query, request.remote_ip).save
+      ip = ENV['HTTP_X_FORWARDED_FOR'] || request.remote_ip
+      SearchSaver.new(@query, ip).save
     end
 
     @articles = @query ? Article.has_keyword(@query) : Article.all
