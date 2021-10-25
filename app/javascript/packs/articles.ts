@@ -9,14 +9,6 @@ interface Article {
     body: string;
 }
 
-function ready(cb: () => void) {
-    if (document.readyState !== 'loading') {
-        cb()
-    } else {
-        document.addEventListener('DOMContentLoaded', cb)
-    }
-}
-
 function setUrlParameter(key: string, val: string) {
     if (window.history.pushState) {
         const params = new URLSearchParams(window.location.search)
@@ -62,7 +54,7 @@ function renderArticles(el: HTMLDivElement, articles: Article[]) {
     ).appendTo(el)
 }
 
-ready(() => {
+$(() => {
     const searchBox = $<HTMLInputElement>('#search_box input[name="query"]').get(0)
     const searchForm = $<HTMLFormElement>('#search_box form').get(0)
     const searchResults = $<HTMLDivElement>("#search_results").get(0)
