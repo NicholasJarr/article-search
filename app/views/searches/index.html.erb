@@ -1,3 +1,7 @@
+<% content_for :head do %>
+    <%= javascript_pack_tag 'searches', 'data-turbolinks-track': 'reload' %>
+<% end %>
+
 <% if @ip_addresses.any? %>
     <section id="table_filter">
         <%= form_with url: searches_path, method: :get, local: true do |f| %>
