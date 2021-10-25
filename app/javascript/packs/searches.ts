@@ -1,3 +1,5 @@
+import * as $ from "jquery"
+
 function ready(cb: () => void) {
     if (document.readyState !== 'loading') {
         cb()
