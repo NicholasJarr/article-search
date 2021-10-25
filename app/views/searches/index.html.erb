@@ -16,6 +16,7 @@
 <table id="searches_table">
     <thead>
         <tr>
+            <th id="timestamp_header">Timestamp</th>
             <th id="query_header">Query</th>
             <th id="ip_address_header">IP Address</th>
         </tr>
@@ -28,6 +29,7 @@
         <% else %>
             <% @searches.each do |s| %>
                 <tr id="<%= s.id %>">
+                    <td><%= s.updated_at.strftime '%d/%m/%y %H:%M %Z' %></td>
                     <td><%= s.query %></td>
                     <td class="ip_address_column"><%= s.ip_address %></td>
                 </tr>

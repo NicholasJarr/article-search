@@ -291,9 +291,14 @@ table#searches_table {
         font-size: 1.1rem;
         font-weight: bold;
 
+        th#timestamp_header {
+            text-align: left;
+            width: 25%;
+        }
+
         th#query_header {
             text-align: left;
-            width: 75%;
+            width: 50%;
         }
 
         th#ip_address_header {
