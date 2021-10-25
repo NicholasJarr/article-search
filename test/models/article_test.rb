@@ -32,6 +32,7 @@ class ArticleTest < ActiveSupport::TestCase
   test "has_keyword should work properly" do
     # Search between the fixtures; check fixtures for available search targets
     assert Article.has_keyword("foo").count == 2
+    assert Article.has_keyword("Foo").count == 2 # case insensitive
     assert Article.has_keyword("bar").count == 2
     assert Article.has_keyword("baz").count == 3
     assert Article.has_keyword("qux").count == 1

@@ -6,5 +6,5 @@ class Article < ApplicationRecord
     validates :body, presence: true, length: { maximum: BODY_MAX_LENGTH }
 
     default_scope { order created_at: :desc }
-    scope :has_keyword, ->(search) { where("title LIKE :keyword OR body LIKE :keyword", keyword: "%#{search}%") }
+    scope :has_keyword, ->(search) { where("title ILIKE :keyword OR body ILIKE :keyword", keyword: "%#{search}%") }
 end
